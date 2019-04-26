@@ -1,5 +1,7 @@
 # FoxUnit
-**Unit Testing for Visual FoxPro developers**
+**为 VFP 开发者提供的单元测试工具**
+
+翻译：xinjie     2019.04.26
 
 Project Manager: [Eric Selje](https://github.com/ESelje)
 
