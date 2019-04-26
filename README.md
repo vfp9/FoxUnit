@@ -3,16 +3,17 @@
 
 翻译：xinjie     2019.04.26
 
-Project Manager: [Eric Selje](https://github.com/ESelje)
+项目管理者: [Eric Selje](https://github.com/ESelje)
 
-The goal of this project is to give VFP Developers a tool to facilitate using unit tests for their Visual FoxPro code base.
-This project has existed for many years as an Open Source project under the patronage of VisionPace Corp. Special thanks to VisionPace for creating this project, and to Russ Swall at VisionPace granting permission to move it to VFPX.
+该项目的目标是为VFP开发人员提供一个工具，以便于为他们的Visual FoxPro代码库使用单元测试。
 
-FoxUnit can also be acquired via Thor's "Check For Updates"
+该项目在VisionPace公司的支持下已作为开源项目存在多年。特别感谢VisionPace创建此项目，以及VisionPace的Russ Swall授权将其移至VFPX。
 
-[FoxUnit Release History](changelog/readme.md)
+FoxUnit也可以通过Thor的“检查更新”获得。
 
-*Helpful Resources*
+[FoxUnit 更新历史](changelog/readme.md)
+
+*资源*
 
 * [Code samples](FoxUnit_Asserts.md)
 * [Files and Folders](FoxUnit_Folders.md)
