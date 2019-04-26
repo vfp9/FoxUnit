@@ -1,32 +1,32 @@
 # FoxUnit Folders
 
-The folder hierarchy used with the FoxUnit project consists of five directories:
+FoxUnit项目的文件夹层次结构包含五个目录：
 
-`.\Documentation` contains text files providing general information about the FoxUnit project as well as license and developer information.
+`.\Documentation` 包含文本文件，提供有关FoxUnit项目的一般信息以及许可证和开发人员信息。
 
-`.\Graphics` is the home of all picture and icon files used throughout the FoxUnit project - no screen shots or other documentation files.
+`.\Graphics` 存放整个FoxUnit项目中使用的所有图片和图标文件 - 没有屏幕截图或其他文档文件。
 
-`.\Source` is used for the FoxUnit source code files of any kind.
+`.\Source` FoxUnit源代码文件。
 
-`.\Text` contains resource files like the two built in test case templates.
+`.\Text` 包含两个内置测试用例的模板资源文件。
 
-`.\Tests` provides a place to store tests - the tests delivered with FoxUnit can be found here right from the beginning.
+`.\Tests` 提供了一个存储测试的地方 -  FoxUnit提供的测试可以从一开始就在这里找到。
 
-All files located in these subdirectories get included in the FoxUnit application file on build. If you want to deploy FoxUnit to a developer team, you just need to provide the FoxUnit application file and the class factory base table (see below). You can also deploy FoxUnit using an SCC system because both of these needed files don't have to be writable.
+位于这些子目录中的所有文件都包含在构建的FoxUnit应用程序文件中。 如果要将FoxUnit部署到开发人员团队，只需提供FoxUnit应用程序文件和类工厂基表（见下文）。 您还可以使用SCC系统部署FoxUnit，因为这些所需的文件都不必是可写的。
 
 ## The FoxUnit Path
 
-The term FoxUnit Path refers to either the home directory of the FoxUnit project or the directory containing the FoxUnit application file (e.g. FoxUnit.app), depending on how FoxUnit was started. If FoxUnit was run by executing FXU.PRG, the FoxUnit Path is the path to FoxUnit.pjx. If FoxUnit was started as a compiled binary file (e.g. FoxUnit.app), the FoxUnit path is the directory containing that file. According to the recommendations mentioned in the readme file, the FoxUnit Path must be configured in the Visual FoxPro search path. Therefore, the FoxUnit Path should be the first choice to store reusable test case classes as well as their corresponding template files.
+术语FoxUnit Path指的是FoxUnit项目的主目录或包含FoxUnit应用程序文件的目录（例如FoxUnit.app），具体取决于FoxUnit的启动方式。 如果FoxUnit是通过执行FXU.PRG运行的，那么FoxUnit Path就是FoxUnit.pjx的路径。 如果FoxUnit作为已编译的二进制文件（例如FoxUnit.app）启动，则FoxUnit路径是包含该文件的目录。 根据自述文件中提到的建议，必须在Visual FoxPro搜索路径中配置FoxUnit路径。 因此，FoxUnit Path应该是存储可重用测试用例类及其相应模板文件的首选。
 
 ## The FoxUnit Data Path
 
-This is where test results and FoxUnit settings are stored. The FoxUnit Data Path always points to a directory named Tests, but is project specific. If there's a project available, the FoxUnit Data Path is the subfolder Tests of the project home directory. If no Project is available, the FoxUnit Data Path is the subfolder Tests of the current directory.
+这是存储测试结果和FoxUnit设置的地方。 FoxUnit数据路径始终指向名为Tests的目录，但该目录是特定于项目的。 如果有可用的项目，FoxUnit数据路径是项目主目录的子文件夹 Tests。 如果没有可用的项目，则FoxUnit数据路径是当前目录的子文件夹 Tests。
 
 ## `FxuClassFactoryBase.dbf`
 
-The class factory base table
+类工厂基表
 
-This file is vital to the class factory of FoxUnit. It must reside in the FoxUnit Path. It doesn't need to be writable. If it is missing or corrupt, FoxUnit won't be able to start at all.
+这个文件对FoxUnit的类工厂至关重要。 它必须位于FoxUnit路径中。 它不需要是可写的。 如果它丢失或损坏，FoxUnit将无法启动。
 
 ## `FxuClassFactory.dbf`
 
