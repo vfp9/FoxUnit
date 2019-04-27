@@ -1,6 +1,6 @@
-## FoxUnit code sample
+## FoxUnit 代码示例
 
-Notice that each **Test Class** can contain multiple **Tests**, which are simply individual procedures defined within the class.
+注意：每个 **测试类(Test Class)** 都可以包含多个 **测试(Tests)**, 你只需在类中定义不同的过程即可。
 
 
 	Define Class CustomerTestClass As FxuTestCase Of FxuTestCase.prg
@@ -33,10 +33,10 @@ Notice that each **Test Class** can contain multiple **Tests**, which are simply
 
 
 **Asserts**
-These Assert methods can be used to test actual values against expected values, with output text to be displayed when the Assert statement is not met.
+这些Assert方法可用于根据预期值测试实际值，并在不满足Assert语句时显示输出文本。
 
 	AssertEquals(tuExpectedValue, tuExpression, tcMessage,tuNonCaseSensitiveStringComparison)
-	(AssertEquals now accepts objects as well as scalar variables)
+	(AssertEquals 现在接受对象和变量)
 	AssertEqualsArrays(@taArray1, @taArray2, tcMessage)
 	AssertNotEqualsArrays(@taArray1, @taArray2, tcMessage)
 
@@ -52,18 +52,18 @@ These Assert methods can be used to test actual values against expected values, 
 	AssertHasError(tcMessage, toException, taStackInfo)
 	AssertHasErrorNo(tcMessage, toException, tnErrorNo, taStackInfo)
 
-	AssertNotImplemented(tcMessage)  (The new default return value for new tests)
+	AssertNotImplemented(tcMessage)  (新测试的新默认返回值)
 
 
-**Other methods**
-Additionally, these methods are frequently used when creating tests:
+**其他方法**
+此外，在创建测试时经常使用这些方法：
 
 
-	SetUp() && Called automatically at beginning of each test
-	TearDown() && Called automatically at the end of each test
-	MessageOut(tcMessage) && Message will be displayed in the UI
+	SetUp() && 在每次测试开始时自动调用
+	TearDown() && 在每次测试结束时自动调用
+	MessageOut(tcMessage) && 在 UI 中显示消息
 
 
-* **Setup()** method should contain any common code that is needed for each test -- such as setting up paths or instantiating objects.
-* **TearDown()** method contains any cleanup code that should be run at the end of each test method.
-* **MessageOut()** - Add any text output from your test methods that you wish to display in the Messages pane of the FoxUnit UI.
+* **Setup()** 方法应包含每个测试所需的任何公共代码 - 例如设置路径或实例化对象。
+* **TearDown()** 方法包含应在每个测试方法结束时运行的任何清理代码。
+* **MessageOut()** - 用于任何你想在 FoxUnit UI 的消息面板中显示的任何的文本。
