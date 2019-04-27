@@ -19,17 +19,18 @@
 
 
 **Version 1.51 - July 29, 2015**
-* Refactored many forms to be subclasses of new fxuFrmUser, which holds the ioFxuInstance object and the SettingsSave() and SettingsRestore() functions.
-* Removed check whether tests are in path
-* Added more unit tests for the forms in fxu_fxuFrmUserTests.prg
-* Misc U/I Cleanup
-* Switched to FoxBin2Prg for SCM
+* 将许多表单重构为新fxuFrmUser的子类，它包含ioFxuInstance对象以及SettingsSave（）和SettingsRestore（）函数。
+* 移除检查所进行的测试是否在 FoxUnit Path 中
+* 在fxu_fxuFrmUserTests.prg中为表单添加了更多单元测试
+* 其他 U/I 清理
+* 切换到FoxBin2Prg for SCM
 
 **Version 1.5 - July 13, 2015**
-* Introduced new class fxu.fxuInstance
-* Removed fxuShowForm.prg
-* Removed fxuNewObject.prg
-(See full list of changes here - [FoxUnit 1.5 Full Changes](FoxUnit-1.5-Full-Changes.md))
+* 增加新类 fxu.fxuInstance
+* 移除 fxuShowForm.prg
+* 移除 fxuNewObject.prg
+
+(请在此处查看完整的更改列表 - [FoxUnit 1.5 完整更新列表](FoxUnit-1.5-Full-Changes.md))
 
 **Version 1.42**
 * Added option to retain visual results of previous tests between each run.
