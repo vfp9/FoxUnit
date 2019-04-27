@@ -1,12 +1,12 @@
-## Change Log
+## 更新历史
 
 **Version 1.7 - November 28, 2017**
-* Each test runs in its own datasession for optimium encapsulation and reproducability
-* Added a [Compare](FoxUnit_CompareButton.md) feature to make analyzing larger results easier
+* 每个测试都在其自己的数据工作期中运行，以实现最佳封装和可重复性
+* 增加 [比较](FoxUnit_CompareButton.md) 功能，使分析更多的结果更容易
 
 **Version 1.61 - September 15, 2017**
-Undeleted a class in the Class Factory Base table that was causing FoxUnit to fail on startup
-Fixed a bug that prevented tests from reloading after editing.
+取消删除类工厂基表中导致 FoxUnit 在启动时失败的类
+修复了编辑后重新加载测试的BUG。
 
 **Version 1.6 - September 20, 2016**
 * Replaced graphics with icons from Visual Studio Graphics Library
