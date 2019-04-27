@@ -83,23 +83,24 @@ Doug Meerschaert发现了一个导致AssertEquals忽略NonCaseSensitive标志的
 
 [Fernando Bozzo](https://github.com/fdbozzo/) 提交了以下的更新：
 
-* In FXU main window, the font of editboxes was changed to Courier New to enhance output of tabular data
-* Solved some historical problems with data path (or I think so, reading the comments on the code)
-* Configured Anchor of textboxes used for search (conditioned for version(5) >= 900)
-* Added the possibility of running FoxUnit from a CI server like CruiseControl, using this DOS syntax: <path>\foxunit.app createFxuResultsAddAllTestsAndRun
-* Closed various ENDPROC/ENDFUNC
-* Text logs converted using STRCONV(Logtext,9) for special characters support (Spanish, German, etc)
-* Expanded the default size of the test-cases loading form because they were too small for large test names when using BDD-style naming (verbose names that describe the tests)
-* Expanded the default size of the FoxUnit main window considering a minimal conservative setup of 800x600
-* Expanded TClass C(80) to C(110) ==> So the Unit Test file name can be 'ut_libraryName__className__methodName.prg'
-* Expanded TName C(100) to C(130) ==> So the method name can be 'SHOULD_DoSomething__WHEN_SomeConditions'
-* Fxu.prg => Added AlwaysOnTop and Zoom Max when executed from CI Server (createFxuResultsAddAllTestsAndRun procedure)
-* fxuresultdata.prg => Bug Fix: Found a very old bug that throws an error sometimes when filtering tests on main window and adding a new test
-* All changes are backward compatible
-
+* 在FXU主窗口中，编辑框的字体更改为Courier New以增强表格数据的输出
+* 解决了数据路径的一些历史问题（或者我认为是这样，阅读代码上的注释）
+* 配置用于搜索的文本框的锚点（条件：version(5) > = 900）
+* 增加了使用这种DOS语法从CruiseControl等CI服务器运行FoxUnit的可能性：<path> \ foxunit.app createFxuResultsAddAllTestsAndRun
+* 完善各种 ENDPROC / ENDFUNC 结构
+* 使用STRCONV（Logtext，9）转换的文本日志，用于支持特殊字符（西班牙语，德语等）
+* 扩展了测试用例加载表单的默认大小，因为在使用BDD样式命名时，它们对于大型测试名称来说太小（描述测试的详细名称）
+* 考虑到800x600的最小保守设置，扩展了FoxUnit主窗口的默认大小
+* 扩展 TClass C（80）到C（110）==>所以单元测试文件名可以是'ut_libraryName__className__methodName.prg'
+* 扩展 TName C（100）到C（130）==>所以方法名称可以是'SHOULD_DoSomething__WHEN_SomeConditions'
+* Fxu.prg =>从CI服务器执行时添加了AlwaysOnTop和Zoom Max（createFxuResultsAddAllTestsAndRun过程）
+* fxuresultdata.prg =>错误修复：发现一个非常老的错误，有时在主窗口上过滤测试并添加新测试时会抛出错误
+* 所有更改都向后兼容
 
 **Version 1.11 - Nov 2013**
-[Matt Slay](https://github.com/mattslay) introduced a splitter bar (using the SFSplitter Class Library) to separate the tests from the results.
+
+[Matt Slay](https://github.com/mattslay) 引入了一个分割条（使用SFSplitter类库）将测试与结果分开。
 
 **Version 1.1 - Sept 2012**
-First version in VFPX. Uses changes by H. Alan Stevens which standardizes the parameter order for Assert calls.
+
+VFPX中的第一个版本。 使用H. Alan Stevens提交的更新标准化Assert调用的参数顺序。
