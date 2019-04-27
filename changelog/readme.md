@@ -63,7 +63,9 @@
 
 
 **Version 1.3 - July 29, 2014**
-Burkhard Stiller Added these assertions:
+
+Burkhard Stiller添加了以下测试：
+
 * AssertEqualsArrays
 * AssertEqualsObjects
 * AssertEqualsValues
@@ -71,13 +73,15 @@ Burkhard Stiller Added these assertions:
 * AssertHasErrorNo
 * AssertIsObject
 
-[Eric Selje](https://github.com/ESelje) added the unit tests he uses to confirm FoxUnit hasn't broken.
+[Eric Selje](https://github.com/ESelje) 添加了一个单元测试，用以判断 FoxUnit 并没有被破坏。
 
 **Version 1.21 - July 11, 2014**
-Doug Meerschaert found a bug that caused AssertEquals to ignore the NonCaseSensitive flag. (work item 34625)
+
+Doug Meerschaert发现了一个导致AssertEquals忽略NonCaseSensitive标志的错误。 （工作项目34625）
 
 **Version 1.2 - July 9, 2014**
-[Fernando Bozzo](https://github.com/fdbozzo/) introduced the following changes:
+
+[Fernando Bozzo](https://github.com/fdbozzo/) 提交了以下的更新：
 
 * In FXU main window, the font of editboxes was changed to Courier New to enhance output of tabular data
 * Solved some historical problems with data path (or I think so, reading the comments on the code)
