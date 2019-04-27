@@ -16,7 +16,7 @@ FoxUnit也可以通过Thor的“检查更新”获得。
 *资源*
 
 * [代码示例](FoxUnit_Asserts.md)
-* [文件和文件夹](FoxUnit_Folders.md)
+* [文件和目录结构](FoxUnit_Folders.md)
 * [在线教程](http://www.aksel.com/whitepapers/foxunit.htm)
 * [单元测试视频教程 (by Doug Hennig on OFUG 2013-12-17)](http://youtu.be/J5PH1tKPYpI)
 * [深入了解 FoxUnit (by Eric Selje, from SWFox 2016)](http://saltydogllc.com/wp-content/uploads/Selje_FoxUnit-in-Depth.pdf)
