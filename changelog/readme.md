@@ -5,15 +5,15 @@
 * 增加 [比较](FoxUnit_CompareButton.md) 功能，使分析更多的结果更容易
 
 **Version 1.61 - September 15, 2017**
-取消删除类工厂基表中导致 FoxUnit 在启动时失败的类
-修复了编辑后重新加载测试的BUG。
+* 取消删除类工厂基表中导致 FoxUnit 在启动时失败的类
+* 修复了编辑后重新加载测试的BUG。
 
 **Version 1.6 - September 20, 2016**
-* Replaced graphics with icons from Visual Studio Graphics Library
-* Grouped icons into a more logical arrangement, with group titles
-* Added the ability to create a test class with unimplemented tests from all methods in a class library
-* Allow custom colors for pass/fail
-* Hide the filter panel unless Filter toggle is switched on
+* 使用Visual Studio图形库中的图标
+* 将图标分组为更合理的排列，包括组标题
+* 添加了使用类库中所有未实现测试创建测试类的功能
+* 允许对测试成功/失败自定义颜色
+* 除非打开过滤器切换，否则隐藏过滤器面板
 
 ![](FoxUnit_Changes_FoxUnitIcons.png)
 
