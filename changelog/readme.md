@@ -33,13 +33,13 @@
 (请在此处查看完整的更改列表 - [FoxUnit 1.5 完整更新列表](FoxUnit-1.5-Full-Changes.md))
 
 **Version 1.42**
-* Added option to retain visual results of previous tests between each run.
+* 添加了在每次运行之间保留先前测试的可视结果的选项。
 
 **Version 1.41 - November 11, 2014**
-* Added a new assertion, AssertNotImplemented()
-* Made that the default function call on new tests
-* Changed name of new tests to testNewTest to conform with standard of test names beginning with 'test'
-* The problem was that if a new test was added but no test code was written, that test would PASS. This is wrong. Now the new test will fail with a message of "Not Implemented Yet" to indicate to the developer that the test has yet to be written.
+* 添加了一个新的判断，AssertNotImplemented（）
+* 使原有的函数可以调用新增的测试
+* 将新测试的名称更改为testNewTest以符合以'test'开头的测试名称标准
+* 问题是，如果添加了新测试但没有编写测试代码，那么该测试将通过。 这是错的。 现在，新测试将失败，并显示“尚未实现”消息，向开发人员表明测试尚未编写。
 
 ![](FoxUnit_Changes_FoxUnit-1.41-Change.png)
 
