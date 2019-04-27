@@ -47,16 +47,16 @@
 
 
 **Version 1.4 - August 1, 2014**
-* Added a filter to only show failed tests
-* Promoted the "Options" button to the main screen
+* 添加了一个过滤器，仅显示失败的测试
+* 将“选项”按钮提升到主表单
 
 ![](FoxUnit_Changes_Changes1.png)
 
-* Added an About tab to the Options form for easy access to the license, getting started, acknowledgments, and version history.
+在“选项”表单中添加了“关于”选项卡，以便于访问许可*协议，入门，鸣谢和版本历史记录*。
 
 ![](FoxUnit_Changes_Foxunit_Options.png)
 
-* Reworked the New Test Class form (and underlying classes) for clarity
+* 为清晰起见，重新编写了新测试类表单（和基础类）
 
 ![](FoxUnit_Changes_FoxUnit_NewTestClass.png)
 
