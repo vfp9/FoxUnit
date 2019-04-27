@@ -1,49 +1,49 @@
-# FoxUnit 1.5 Full Change Log
+# FoxUnit 1.5 完整更新历史
 
 ## FXU.PRG 
 
-* Changed version information constant C_Version to reflect full minor version information (1.2 -> 1.5). 
-* Added compiler info about files to require on build via EXTERNAL (still incomplete). 
-* Reworked code and calls during interactive startup (e.g. eliminated calling GetFoxUnitForm() twice). 
-* Made class fxu use FxUInstance and cleaned up commented code formerly calling function that now have disappeared. 
-* Added function GetFoxUnitPath(). 
-* Removed function ManageFxuClassFactory(). 
-* Removed function CheckPath(). 
-* Removed function GetTestsDir(). 
-* Added function FXUShowForm() (taken from FXUShowForm.prg). 
-* Made function createFxuResultsAddAllTestsAndRun() use FxuInstance fixed bug by introducing new variable lnTest to replace variable I in loops because it conflicted with variable having the same name in sub-calls. 
+* 更改版本信息常量 C_Version 以反映完整的次要版本信息（1.2  - > 1.5）。
+* 添加了有关通过EXTERNAL构建时需要的文件的编译器信息（仍然不完整）。
+* 重写在交互式启动期间的代码和调用（例如，不会两次调用GetFoxUnitForm（））。
+* 使类 fxu 使用 FxUInstance 并清理无用的注释代码。
+* 添加了 GetFoxUnitPath（）函数。
+* 删除了函数 ManageFxuClassFactory（）。
+* 删除了函数 CheckPath（）。
+* 删除了函数 GetTestsDir（）。
+* 添加了FXUShowForm（）功能（取自FXUShowForm.prg）。
+* 使函数 createFxuResultsAddAllTestsAndRun（）使用 FxuInstance 修复bug，引入新变量lnTest来替换循环中的变量I，因为它与子调用中具有相同名称的变量冲突。
 
 ## FXUAssertions.prg 
 
-* Made class FxuAssertions use FxuInstance. 
-* Introduced new property ioFxuInstance. 
-* Enforced passing an FxuInstance object to Init() which gets stored in ioFxuInstance. 
+* 使类 FxuAssertions 使用 FxuInstance。
+* 增加新属性 ioFxuInstance。
+* 强制将FxuInstance对象传递给Init（），该对象存储在ioFxuInstance中。
 
 ##  FXUNewObject.prg, FXUShowForm.prg 
 
-* Removed / Excluded from project. 
+* 从项目中 移除 / 排除 
 
 ##  FXUResultData.prg 
 
-* Basically same as for FXUAssertions. 
+* 与 FXUAssertions 基本相同。
 
 ##  FXUTestCase.prg 
 
-* Basically same as for FXUAssertions. 
-*  BugFix related to ilSuccess property. 
+* 与 FXUAssertions 基本相同。
+* 与 ilSuccess 属性相关的 BugFix。
 
 ## FXUTestCaseEnumerator.prg 
 
-* Basically same as for FXUAssertions. 
+* 与 FXUAssertions 基本相同。 
 
 ##  FXUTestResult.prg 
 
-* BugFix related to ilCurrentResult property. 
+* 与 ilCurrentResult 相关的 BugFix。 
  
 
 ##  FXUTestSuite.prg 
 
-* Basically same as for FXUAssertions. 
+* 与 FXUAssertions 基本相同。 
 
 ## Fxu.vcx 
 
