@@ -56,10 +56,9 @@
 	* 实验：使 DetailsZoom（）在VFP内置的备注编辑窗口中打开详细信息而不是frmShowInfo。 目标是改善体验并保存代码。
 	* 与BINDEVENTS（）一起使用的方法使用正确的数据工作期。
 	* 更改了多个控件的 Picture 属性以直接指向图形文件，因此编译时需要这些图形文件。
-	* 使一些控件的Init（）等到 thisform.icgridrs 有效（他们的 Init（）在 form 的 Init（）之前被调用但是一些东西从Load（）移到了Init（）所以并不是所有都可用在控件的 Init（））。
+	* 使一些控件的Init（）等到 thisform.icgridrs 有效（他们的 Init（）在 form 的 Init（）之前被调用但是一些东西从Load（）移到了Init（）所以并不是所有在控件的 Init（）的都可用）。
 	
-	* Made Init() of some controls to wait until thisform.icgridrs gets valid (their Init()s are called before form's Init() but some stuff that has moved from Load() to Init() and so not everything is already available in control's Init()s). 
-* Class FrmNewTestClass 
+* 类 FrmNewTestClass 
 	* Made form use FxuInstance. 
 	* Introduced new property ioFxuInstance. 
 	* Enforced passing FxuInstance object to Init() which gets stored in ioFxuInstance. 
