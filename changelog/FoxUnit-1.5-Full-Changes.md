@@ -47,15 +47,17 @@
 
 ## Fxu.vcx 
 
-* Added class FxuInstance 
-*  Class FrmFoxUnit 
-	*  Made form use FxuInstance. 
-	*  Introduced new property ioFxuInstance. 
-	* Enforced passing an FxuTestBroker object to Init() which gets stored in ioTestBroker and whose FxuInstance object ioFxuInstance gets also stored in ioFxuInstance of FrmFoxUnit. 
-	* Moved half of the code in Load() to Init() (relies on or can be optimized using FxuInstance which isn't yet available in Load() ). 
-	* Experimental: Made DetailsZoom() open details in VFP-built-in memo edit window instead of frmShowInfo. Goal is to improve experience and save code. 
-	* Made methods used with BINDEVENTS() use correct data session. 
-	* Changed Picture properties of multiple controls to point to graphics files directly and therefore make compiler require those graphics files. 
+* 增加类 FxuInstance 
+* 类 FrmFoxUnit 
+	* 使表单可以使用 FxuInstance。
+	* 增加新属性 ioFxuInstance。
+	* 强制将FxuTestBroker对象传递给Init()，该对象存储在ioTestBroker中，其FxuInstance对象ioFxuInstance也存储在FrmFoxUnit的ioFxuInstance中。
+	* 将Load（）中的一半代码移动到Init（）（依赖于或者可以使用FxuInstance进行优化，而FxuInstance在Load（）中尚不可用）。
+	* 实验：使 DetailsZoom（）在VFP内置的备注编辑窗口中打开详细信息而不是frmShowInfo。 目标是改善体验并保存代码。
+	* 与BINDEVENTS（）一起使用的方法使用正确的数据工作期。
+	* 更改了多个控件的 Picture 属性以直接指向图形文件，因此编译时需要这些图形文件。
+	* 使一些控件的Init（）等到 thisform.icgridrs 有效（他们的 Init（）在 form 的 Init（）之前被调用但是一些东西从Load（）移到了Init（）所以并不是所有都可用在控件的 Init（））。
+	
 	* Made Init() of some controls to wait until thisform.icgridrs gets valid (their Init()s are called before form's Init() but some stuff that has moved from Load() to Init() and so not everything is already available in control's Init()s). 
 * Class FrmNewTestClass 
 	* Made form use FxuInstance. 
