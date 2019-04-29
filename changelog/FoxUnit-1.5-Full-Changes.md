@@ -59,15 +59,17 @@
 	* 使一些控件的Init（）等到 thisform.icgridrs 有效（他们的 Init（）在 form 的 Init（）之前被调用但是一些东西从Load（）移到了Init（）所以并不是所有在控件的 Init（）的都可用）。
 	
 * 类 FrmNewTestClass 
-	* Made form use FxuInstance. 
-	* Introduced new property ioFxuInstance. 
-	* Enforced passing FxuInstance object to Init() which gets stored in ioFxuInstance. 
-	* Moved all code away from Load(). 
-	* Refactored SaveSettings() and RestoreSettings() methods, made them process user names containing up to 15 characters (instead of only 10 before) without losing existing settings stored in files. 
-	* Changed code in txtTestClassName.Valid() event to only change enabled state of cmdCreate instead of forcing user to type some chars to be able to leave the field. 
-* Class FxuFrmLoadClass 
-	* Changed Picture properties of multiple controls to point to graphics files directly and therefore make compiler require those graphics files. 
-* Class FxuFrmTestBroker 
-	* Made form use FxuInstance. 
-	* Introduced new property FxuInstance. 
-	* Enforced passing FxuInstance object to Init() which gets stored in FxuInstance. 
+	* 使表单使用 FxuInstance 。
+	* 增加新属性 ioFxuInstance 。
+	* 强制将 FxuInstance 对象传递给 Init（），该对象存储在 ioFxuInstance 中。
+	* 将所有代码移离 Load（）。
+	* 重构了 SaveSettings（）和 RestoreSettings（）方法，使它们处理最多包含15个字符（而不是之前只有10个字符）的用户名，而不会丢失存储在文件中的现有设置。
+	* 更改了 txtTestClassName.Valid（）事件中的代码，仅更改 cmdCreate 的启用状态，而不是强制用户键入一些字符以便能够离开该字段。
+
+* 类 FxuFrmLoadClass 
+	* 更改了多个控件的 Picture 属性以直接指向图形文件，因此编译时需要这些图形文件 
+
+* 类 FxuFrmTestBroker 
+	* 使表单使用 FxuInstance 。
+	* 增加新属性 FxuInstance 。
+	* 强制将 FxuInstance 对象传递给Init（），该对象存储在 FxuInstance 中。
