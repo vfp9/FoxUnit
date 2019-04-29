@@ -69,7 +69,7 @@ DEFINE CLASS FxuTestCaseEnumerator as FxuCustom OF FxuCustom.prg
 	*
 	********************************************************************
   
-	    ASSERT FILE(m.tcProgramFile) MESSAGE "FoxUnit:  Cannot locate test case file." && HAS
+	    ASSERT FILE(m.tcProgramFile) MESSAGE "FoxUnit:  找不到测试用例文件。" && HAS
 	
 		LOCAL ARRAY laProcedures[1]
 		

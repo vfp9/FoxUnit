@@ -204,10 +204,10 @@ DEFINE CLASS FxuResultData AS FxuCustom OF FxuCustom.prg
 
 		CD (m.lcTestsFolder)
 		m.lcTestClassFile = GETFILE("PRG", ;
-			"Test Class .PRG", ;
+			"测试类 .PRG", ;
 			"", ;
 			0, ;
-			"Select the Test Class .PRG whose tests (methods) you want to load into the list.")
+			"选择 PRG 测试类，其测试（方法）将载入到列表")
 		CD (m.lcCurdir)
 
 		m.llNew = .T.  &&& as opposed to re-loading an existing .PRG
@@ -367,7 +367,7 @@ DEFINE CLASS FxuResultData AS FxuCustom OF FxuCustom.prg
 	LOCAL lcTestClassFile, lcFullPath
 	m.lcTestClassFile = ALLTRIM(m.tcTestClass) + ".prg"
 	m.lcFullPath = LOCFILE(ADDBS(m.tcDirectory) + m.lcTestClassFile, "prg", ;
-		"Could Not Locate " + m.lcTestClassFile) && Added directory. HAS
+		"不能定位 " + m.lcTestClassFile) && Added directory. HAS
 
 	LOCAL lcTestClass, lcTestName
 	m.lnSelect = SELECT(0)
@@ -416,10 +416,10 @@ DEFINE CLASS FxuResultData AS FxuCustom OF FxuCustom.prg
 	DO CASE
 		CASE NOT m.llClassCreated AND EMPTY(m.loTestClassCreator.icLastErrorMessage)
 		CASE NOT m.llClassCreated
-			MESSAGEBOX("Class not created:" + CHR(13) + ;
+			MESSAGEBOX("不能创建类：" + CHR(13) + ;
 				m.loTestClassCreator.icLastErrorMessage, ;
 				16, ;
-				"Class Not Created")
+				"类没有创建")
 		OTHERWISE
 			MODIFY COMMAND (m.lcNewTestClassName)
 			THIS.ioFileIO.RenameFile(m.lcNewTestClassName, m.lcNewTestClassName)
@@ -478,24 +478,20 @@ DEFINE CLASS FxuResultData AS FxuCustom OF FxuCustom.prg
 		m.lcTestClass=m.tcTestClass
 	ENDIF 
 	IF NOT FILE(m.lcTestClass)
-		MESSAGEBOX("Unable to locate " + CHR(13) + ;
+		MESSAGEBOX("不能定位 " + CHR(13) + ;
 			m.tcTestClass + CHR(13) + ;
-			"typically because it is not in the VFP " + ;
-			"path at the moment -- you should include " + ;
-			"the folder containing FoxUnit test classes (.PRGs) " + ;
-			"in your VFP path before starting FoxUnit.", ;
+			"通常因为它目前不在VFP路径中 - 您应该在启动FoxUnit之前在VFP搜素路径中设置包含FoxUnit测试类（.PRG）的文件夹。", ;
 			16, ;
-			"Please Note")
+			"注意")
 		RETURN .F.
 	ELSE
 		m.lcTestClass = THIS.ioFileIO.GetCaseSensitiveFileName(FULLPATH(m.lcTestClass), .T.)
 	ENDIF
 
 	IF THIS.IsFileReadOnly(m.lcTestClass)
-		MESSAGEBOX(m.lcTestClass + " is marked ReadOnly, " + ;
-			"typically because it is currently not " + ;
-			"checked out of your Source Control provider.", ;
-			48, "Please Note")
+		MESSAGEBOX(m.lcTestClass + " 被标记为只读，" + ;
+			"通常是因为它目前未从您的源代码管理程序中签出。", ;
+			48, "注意")
 		RETURN .F.
 	ENDIF
 
@@ -509,12 +505,11 @@ DEFINE CLASS FxuResultData AS FxuCustom OF FxuCustom.prg
 		ENDIF
 	ENDFOR
 	IF m.lnInsertLine < 0
-		MESSAGEBOX("Unable to insert new test method " + ;
-			"into " + m.tcTestClass + "." + ;
+		MESSAGEBOX("不能插入新测试方法 " + ;
+			"到 " + m.tcTestClass + "." + ;
 			CHR(13) + CHR(13) + ;
-			m.tcTestClass + " will simply be opened " + ;
-			"in the program editor.", ;
-			48, "Please Note")
+			m.tcTestClass + " 将只在程序编辑器中打开。", ;
+			48, "注意")
 		m.lnNewMethodLine = 1
 	ELSE
 * insert these 8 lines:
@@ -596,28 +591,22 @@ DEFINE CLASS FxuResultData AS FxuCustom OF FxuCustom.prg
 	LOCAL lcTestClass
 	m.lcTestClass = ADDBS(m.tcPath) + FORCEEXT(m.tcTestClass, "PRG") && Added Path. HAS
 	IF NOT FILE(m.lcTestClass)
-		MESSAGEBOX("Unable to locate " + CHR(13) + ;
+		MESSAGEBOX("无法定位 " + CHR(13) + ;
 			m.tcTestClass + CHR(13) + ;
-			"typically because it is not in the VFP " + ;
-			"path at the moment -- you should include " + ;
-			"the folder containing FoxUnit test classes (.PRGs) " + ;
-			"in your VFP path before starting FoxUnit.", ;
+			"通常因为它目前不在VFP路径中 - 您应该在启动FoxUnit之前在VFP搜素路径中设置包含FoxUnit测试类（.PRG）的文件夹。", ;
 			16, ;
-			"Please Note")
+			"注意")
 		RETURN .F.
 	ELSE
 		m.lcTestClass = THIS.ioFileIO.GetCaseSensitiveFileName(FULLPATH(m.lcTestClass), .T.)
 
 	ENDIF
 	IF THIS.IsFileReadOnly(m.lcTestClass)
-		MESSAGEBOX(m.lcTestClass + " is marked ReadOnly, " + ;
-			"typically because it is currently not " + ;
-			"checked out of your Source Control provider." + ;
+		MESSAGEBOX(m.lcTestClass + " 被标记为只读， " + ;
+			"通常是因为它目前未从您的源代码管理程序中签出。" + ;
 			CHR(13) + CHR(13) + ;
-			m.lcTestClass + " will be opened in the VFP " + ;
-			"program editor, but it is ReadOnly, and you " + ;
-			"will not be able to make any changes.", ;
-			48, "Please Note")
+			m.lcTestClass + " 将在VFP程序编辑器中打开，但它是ReadOnly，您将无法进行任何更改。", ;
+			48, "注意")
 	ENDIF
 *
 *  find the FUNCTION/PROCEDURE <m.tcTestName> line
@@ -640,12 +629,9 @@ DEFINE CLASS FxuResultData AS FxuCustom OF FxuCustom.prg
 	ENDFOR
 	RELEASE m.laLines
 	IF m.lnCursorLine < 0
-		MESSAGEBOX("Unable to locate the " + m.lcTestName + ;
-			"method -- " + m.lcTestClass + " will be " + ;
-			"opened in the program editor with the " + ;
-			"cursor positioned whereever it was last " + ;
-			"time.", ;
-			48, "Please Note")
+		MESSAGEBOX("不能定位 " + m.lcTestName + ;
+			"方法 -- " + m.lcTestClass + " 将在程序编辑器中打开，光标位于上次打开时的位置。", ;
+			48, "注意")
 		m.lnCursorLine = 0
 	ENDIF
 

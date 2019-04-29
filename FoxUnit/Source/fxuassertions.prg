@@ -97,7 +97,7 @@ EXTERNAL ARRAY taArray1, taArray2
  	FUNCTION AssertNotImplemented(tcMessage AS STRING) AS Boolean
 * tcMessage <byVal> [optional]! (default=""):= assertion message that gets logged
 *
-	tcMessage=EVL(tcMessage,"This test has not been implemented yet")
+	tcMessage=EVL(tcMessage,"此测试尚未编写完成。")
 	THIS.ReportNotImplemented(m.tcMessage)
 	THIS.ilSuccess = .f.
 	RETURN THIS.ilSuccess 
@@ -163,7 +163,7 @@ EXTERNAL ARRAY taArray1, taArray2
 		IF tlNonCaseSensitiveStringCompare AND m.lcItem1Type == "C"
 
 			IF !UPPER(m.teValue1 ) == UPPER(m.teValue2 )
-				THIS.ReportValuesNotEqual(m.tcMessage + " (Non Case Sensitive String Comparison) ", m.teValue1, m.teValue2 )
+				THIS.ReportValuesNotEqual(m.tcMessage + " (不区分大小写的字符串比较) ", m.teValue1, m.teValue2 )
 				m.llAssertEqualsValues = .F.
 			ENDIF
 		ELSE
@@ -196,15 +196,15 @@ EXTERNAL ARRAY taArray1, taArray2
 		THIS.ReportTypeMismatch(m.tcMessage, m.taArray1, m.taArray2)
 *\\ compare array structure (part I) - element count
 	CASE NOT ALEN(m.taArray1) = ALEN(m.taArray2)
-		THIS.ReportArrayMismatch(m.tcMessage + " (Array Length Comparison) ", ;
+		THIS.ReportArrayMismatch(m.tcMessage + " (数组长度比较) ", ;
 			  @m.taArray1, @m.taArray2, 0)
 *\\ compare array structure (part II) - column count
 	CASE NOT ALEN(m.taArray1, 2) = ALEN(m.taArray2, 2)
-		THIS.ReportArrayMismatch(m.tcMessage + " (Array Column Count Comparison) ", ;
+		THIS.ReportArrayMismatch(m.tcMessage + " (数组列比较) ", ;
 			  @m.taArray1, @m.taArray2, 0)
 *\\ compare array structure (part III) - row count
 	CASE NOT ALEN(m.taArray1, 1) = ALEN(m.taArray2, 1)
-		THIS.ReportArrayMismatch(m.tcMessage + " (Array Row Count Comparison) ", ;
+		THIS.ReportArrayMismatch(m.tcMessage + " (数组行比较) ", ;
 			  @m.taArray1, @m.taArray2, 0)
 *\\ handle case sensitive STRING comparison
 	CASE m.tlNonCaseSensitiveStringCompare AND ;
@@ -212,7 +212,7 @@ EXTERNAL ARRAY taArray1, taArray2
 			VARTYPE(m.taArray2) == "C" AND ;
 			NOT UPPER(m.taArray1) == UPPER(m.taArray2)
 		THIS.ReportValuesNotEqual(m.tcMessage + ;
-			  " (Non Case Sensitive String Comparison) ", ;
+			  " (不区分大小写的字符串比较) ", ;
 			  m.taArray1, m.taArray2, 0)
 	OTHERWISE
 *\\ compare both arrays
@@ -231,14 +231,14 @@ EXTERNAL ARRAY taArray1, taArray2
 *\\ handle case sensitive STRING comparison
 				IF m.tlNonCaseSensitiveStringCompare
 					IF NOT UPPER(m.taArray1[m.lnLoop]) == UPPER(m.taArray2[m.lnLoop])
-						THIS.ReportArrayMismatch(m.tcMessage + " (Array String Value Comparison) ", ;
+						THIS.ReportArrayMismatch(m.tcMessage + " (数组字符串值比较) ", ;
 							  @m.taArray1, @m.taArray2, m.lnLoop)
 						m.llAssertEqualsArrays = .F.
 					ENDIF
 				ELSE
 					IF NOT m.taArray1[m.lnLoop] == m.taArray2[m.lnLoop]
 						THIS.ReportArrayMismatch(m.tcMessage + ;
-							  " (Array String Value Comparison - Exact Match) ", ;
+							  " (数组字符串值比较 - 完全匹配) ", ;
 							  @m.taArray1, @m.taArray2, m.lnLoop)
 						m.llAssertEqualsArrays = .F.
 					ENDIF
@@ -246,13 +246,13 @@ EXTERNAL ARRAY taArray1, taArray2
 			ELSE
 				IF NOT VARTYPE(m.taArray1[m.lnLoop]) == VARTYPE(m.taArray2[m.lnLoop])
 					THIS.ReportArrayMismatch(m.tcMessage + ;
-						  " (Array Field Type Comparison) ", ;
+						  " (数组元素类型比较) ", ;
 						   @m.taArray1, @m.taArray2, m.lnLoop)
 					m.llAssertEqualsArrays = .F.
 				ELSE
 					IF NOT m.taArray1[m.lnLoop] = m.taArray2[m.lnLoop]
 						THIS.ReportArrayMismatch(m.tcMessage + ;
-							  " (Array Field Value Comparison) ", ;
+							  " (数组元素类型比较) ", ;
 							  @m.taArray1, @m.taArray2, m.lnLoop)
 						m.llAssertEqualsArrays = .F.
 					ENDIF
@@ -479,7 +479,7 @@ EXTERNAL ARRAY taArray1, taArray2
  	PROCEDURE ReportIsNull(tcMessage) AS Void
 	THIS.NewMessageDivider(.T.)
 	THIS.AddMessage(m.tcMessage)
-	THIS.AddMessage("Item is Null")
+	THIS.AddMessage("项目是 Null")
 	ENDPROC
 ********************************************************************
 ********************************************************************
@@ -487,14 +487,14 @@ EXTERNAL ARRAY taArray1, taArray2
  	PROCEDURE ReportIsEmpty(tcMessage AS STRING) AS Void
 	THIS.NewMessageDivider(.T.)
 	THIS.AddMessage(m.tcMessage)
-	THIS.AddMessage("Item is Empty")
+	THIS.AddMessage("项目是空值")
 	ENDPROC
 ********************************************************************
 ********************************************************************
  	PROCEDURE ReportObjectsNotSame(tcMessage AS STRING) AS Void
 	THIS.NewMessageDivider(.T.)
 	THIS.AddMessage(m.tcMessage)
-	THIS.AddMessage("Objects are not the same")
+	THIS.AddMessage("对象不一样")
 	ENDPROC
 ********************************************************************
 ********************************************************************
@@ -504,9 +504,9 @@ EXTERNAL ARRAY taArray1, taArray2
 	m.lcReportType2 = THIS.EnumerateVarType(VARTYPE(m.teItem2))
 	THIS.NewMessageDivider(.T.)
 	THIS.AddMessage(m.tcMessage)
-	THIS.AddMessage("Value Type Mismatch")
-	THIS.AddMessage("Expected Type: " + m.lcReportType1 + " Expected Value: "	+ TRANSFORM(m.teItem1))
-	THIS.AddMessage("Actual Type: "	+ m.lcReportType2 + " Actual Value: "	+ TRANSFORM(m.teItem2))
+	THIS.AddMessage("值类型不匹配")
+	THIS.AddMessage("预期类型： " + m.lcReportType1 + " 预期值： "	+ TRANSFORM(m.teItem1))
+	THIS.AddMessage("实际类型： "	+ m.lcReportType2 + " 实际值： "	+ TRANSFORM(m.teItem2))
 	ENDPROC
 ********************************************************************
 ********************************************************************
@@ -520,21 +520,21 @@ EXTERNAL ARRAY taArray1, taArray2
 	THIS.NewMessageDivider(.T.)
 	THIS.AddMessage(m.tcMessage)
 	IF m.tnArrayPointer = 0
-		THIS.AddMessage("Array Mismatch")
+		THIS.AddMessage("数组不匹配")
 	ELSE
-		THIS.AddMessage("Array Mismatch at Index:" + TRANSFORM(m.tnArrayPointer))
+		THIS.AddMessage("索引中的数组不匹配：" + TRANSFORM(m.tnArrayPointer))
 	ENDIF
-	THIS.AddMessage("Expected Type: " + m.lcReportType1 + " Expected Value: " + TRANSFORM(m.taArray1[m.tnArrayPointer]))
-	THIS.AddMessage("Actual Type: "	+ m.lcReportType2 + " Actual Value: " + TRANSFORM(m.taArray2[m.tnArrayPointer]))
+	THIS.AddMessage("预期类型： " + m.lcReportType1 + " 预期值： " + TRANSFORM(m.taArray1[m.tnArrayPointer]))
+	THIS.AddMessage("实际类型： "	+ m.lcReportType2 + " 实际值： " + TRANSFORM(m.taArray2[m.tnArrayPointer]))
 	ENDPROC
 ********************************************************************
 ********************************************************************
  	PROCEDURE ReportValuesNotEqual(tcMessage AS STRING, teItem1 AS Variant, teItem2 AS Variant) AS Void
 	THIS.NewMessageDivider(.T.)
 	THIS.AddMessage(m.tcMessage)
-	THIS.AddMessage("Values Not Equal")
-	THIS.AddMessage("Expected Value: " + TRANSFORM(m.teItem1))
-	THIS.AddMessage("Actual Value: " + TRANSFORM(m.teItem2))
+	THIS.AddMessage("值不匹配")
+	THIS.AddMessage("预期值： " + TRANSFORM(m.teItem1))
+	THIS.AddMessage("实际值： " + TRANSFORM(m.teItem2))
 	This.AddComparisonSource(TRANSFORM(m.teItem1), TRANSFORM(m.teItem2))
 	ENDPROC
 ********************************************************************
@@ -542,7 +542,7 @@ EXTERNAL ARRAY taArray1, taArray2
  	PROCEDURE ReportAssertionFalse(tcMessage AS STRING) AS Void
 	THIS.NewMessageDivider(.T.)
 	THIS.AddMessage(m.tcMessage)
-	THIS.AddMessage("AssertTrue Returned False")
+	THIS.AddMessage("AssertTrue 返回 False")
 	ENDPROC
 ********************************************************************
 ********************************************************************
@@ -550,7 +550,7 @@ EXTERNAL ARRAY taArray1, taArray2
  	PROCEDURE ReportAssertionTrue(tcMessage AS STRING) AS Void
 	THIS.NewMessageDivider(.T.)
 	THIS.AddMessage(m.tcMessage)
-	THIS.AddMessage("AssertFalse Returned True")
+	THIS.AddMessage("AssertFalse 返回 True")
 	ENDPROC
 ********************************************************************
 ********************************************************************
@@ -559,7 +559,7 @@ EXTERNAL ARRAY taArray1, taArray2
 ********************************************************************
 	THIS.NewMessageDivider(.T.)
 	THIS.AddMessage(m.tcMessage)
-	THIS.AddMessage("AssertIsObject Returned False")
+	THIS.AddMessage("AssertIsObject 返回 False")
 ********************************************************************
 	ENDPROC
 ********************************************************************
@@ -568,7 +568,7 @@ EXTERNAL ARRAY taArray1, taArray2
  	PROCEDURE ReportAssertionIsNotObject(tcMessage AS STRING) AS Void
 	THIS.NewMessageDivider(.T.)
 	THIS.AddMessage(m.tcMessage)
-	THIS.AddMessage("AssertIsNotObject Returned False")
+	THIS.AddMessage("AssertIsNotObject 返回 False")
 	ENDFUNC
 ********************************************************************
 ********************************************************************
@@ -576,7 +576,7 @@ EXTERNAL ARRAY taArray1, taArray2
  	PROCEDURE ReportAssertionHasError(tcMessage AS STRING) AS Void
 	THIS.NewMessageDivider(.T.)
 	THIS.AddMessage(m.tcMessage)
-	THIS.AddMessage("ReportAssertionHasError Returned False")
+	THIS.AddMessage("ReportAssertionHasError 返回 False")
 	ENDPROC
 ********************************************************************
 ********************************************************************
@@ -584,18 +584,18 @@ EXTERNAL ARRAY taArray1, taArray2
  	PROCEDURE ReportAssertionHasErrorNo(tcMessage AS STRING, tnExpectedNumber AS INTEGER, tnErrorNoThrown AS INTEGER) AS Void
 	THIS.NewMessageDivider(.T.)
 	THIS.AddMessage(m.tcMessage)
-	THIS.AddMessage("Expected ErrorNo# " + TRANSFORM(m.tnExpectedNumber))
+	THIS.AddMessage("Exception ErrorNo# " + TRANSFORM(m.tnExpectedNumber))
 	DO CASE
 	CASE m.tnErrorNoThrown = -1
 *\\ Exception not TypeOf(Object)
-		THIS.AddMessage("No Object Was Generated")
+		THIS.AddMessage("没有生成对象")
 	CASE m.tnErrorNoThrown = -2
 *\\ Object not TypeOf(Exception)
-		THIS.AddMessage("Generated Object Was Not Of Type 'Exception'")
+		THIS.AddMessage("生成的对象不属于“Exception”类型")
 	OTHERWISE
-		THIS.AddMessage("ErrorNo# That Was Thrown: " + TRANSFORM(m.tnErrorNoThrown))
+		THIS.AddMessage("ErrorNo# 被抛出 " + TRANSFORM(m.tnErrorNoThrown))
 	ENDCASE
-	THIS.AddMessage("ReportAssertionHasErrorNo Returned False")
+	THIS.AddMessage("ReportAssertionHasErrorNo 返回 False")
 	ENDPROC
 ********************************************************************
 ********************************************************************
@@ -624,7 +624,7 @@ EXTERNAL ARRAY taArray1, taArray2
 *\\ BSt: slightly shortened
 	THIS.AddMessage("-------------------------------")
 	IF NOT EMPTY(m.tlAssertionFailure)
-		THIS.AddMessage("------Assertion Failure")
+		THIS.AddMessage("------测试失败")
 		THIS.AddMessage("-------------------------------")
 	ENDIF
 	ENDPROC
