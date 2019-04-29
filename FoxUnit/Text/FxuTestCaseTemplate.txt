@@ -3,64 +3,54 @@ DEFINE CLASS <<testclass>> as FxuTestCase OF FxuTestCase.prg
 **********************************************************************
 	#IF .f.
 	*
-	*  this LOCAL declaration enabled IntelliSense for
-	*  the THIS object anywhere in this class
+	*  这里的 Local 声明，可以使本类中任意地方的 This 对象获得智能感应能力。
 	*
 	LOCAL THIS AS <<testclass>> OF <<testclass>>.PRG
 	#ENDIF
 	
 	*  
-	*  declare properties here that are used by one or
-	*  more individual test methods of this class
+	*  这里声明的属性用于本类中一个或多个单独的测试方法。
+	*  
 	*
-	*  for example, if you create an object to a custom
-	*  THIS.Property in THIS.Setup(), estabish the property
-	*  here, where it will be available (to IntelliSense)
-	*  throughout:
+	*  例如，如果你在本类的 Setup 方法中创建了一个对象并存储在本类的一个自定义
+	*  属性中，那么这里声明的属性将在其他任何地方（通过智能感应而）可用：
+	*  
+	*  例如：
 	*
-*!*		ioObjectToBeTested = .NULL.
-*!*		icSetClassLib = SPACE(0)
+*!*		ioObjectToBeTested = .NULL.      && 译者注：要测试的类的实例
+*!*		icSetClassLib = SPACE(0)         && 译者注：已经打开的类库清单
 
 
-	* the icTestPrefix property in the base FxuTestCase class defaults
-	* to "TEST" (not case sensitive). There is a setting on the interface
-	* tab of the options form (accessible via right-clicking on the
-	* main FoxUnit form and choosing the options item) labeld as
-	* "Load and run only tests with the specified icTestPrefix value in test classes"
+	* icTestPrefix 属性在基类 FxuTestCase 中的默认值是“TEST”(不区分大小写)。
+	* 在选项表单中存在一个界面接口可以对其进行设置。（通过在 FoxUnit 表单上右
+	* 击鼠标并选择选项菜单可调出选项表单，对应的选项标签为“仅载入并运行具有和
+	* 测试类中指定 icTextPrefix 值相同前缀的类”）
 	*
-	* If this is checked, then only tests in any test class that start with the
-	* prefix specified with the icTestPrefix property value will be loaded
-	* into FoxUnit and run. You can override this prefix on a per-class basis.
+	* 如果这个选项被选择，那么在任何测试类中仅将具有 icTestPrefix 指定前缀的类
+	* 载入 FoxUnit 并运行。你可以在类的各个层次覆盖这个前缀。
 	*
-	* This makes it possible to create ancillary methods in your test classes
-	* that can be shared amongst other test methods without being run as
-	* tests themselves. Additionally, this means you can quickly and easily 
-	* disable a test by modifying it and changing it's test prefix from
-	* that specified by the icTestPrefix property
+	* 这就使得在测试类中创建辅助的方法成为可能，这样就可以与其他的测试方法共享
+	* 而无须单独测试它们。此外，这也意味着你可以通过编辑更改 icTestPrefix 属性
+	* 快速便捷的禁用一个测试。
 	
-	* Additionally, you could set this in the INIT() method of your derived class
-	* but make sure you dodefault() first. When the option to run only
-	* tests with the icTestPrefix specified is checked in the options form,
-	* the test classes are actually all instantiated individually to pull
-	* the icTestPrefix value.
+	* 同样，你可以在你的原始类的 Init() 中进行这样的设置。但是，你必须保证事件
+	* 的第一行代码是 DoDefault() 。当选项表单中对应的选项被选中时，测试类的所有
+	* 实例实际上都具有 icTestPrefix 属性值
 
-*!*		icTestPrefix = "<Your preferred prefix here>"
+*!*		icTestPrefix = "<你首选的前缀>"
 	
 	********************************************************************
 	FUNCTION Setup
 	********************************************************************
 	*
-	*  put common setup code here -- this method is called
-	*  whenever THIS.Run() (inherited method) to run each
-	*  of the custom test methods you add, specific test
-	*  methods that are not inherited from FoxUnit
+	*  这里是公共的设置代码 -- 这个方法在 This.Run() (继承的方法)中被调用。每测
+	*  试一个你所增加的自定义测试方法，它就调用一次，特定的测试方法不能从 FoxUnit
+	*  中继承。
 	*
-	*  do NOT call THIS.Assert..() methods here -- this is
-	*  NOT a test method
+	*  在这里不要调用 THIS.Assert..() 方法 -- 它不是一个测试方法。
 	*
-    *  for example, you can instantiate all the object(s)
-    *  you will be testing by the custom test methods of 
-    *  this class:
+    *  例如，你可以在这里实例化在自定义测试方法中要测试的类：
+    *
 *!*		THIS.icSetClassLib = SET("CLASSLIB")
 *!*		SET CLASSLIB TO MyApplicationClassLib.VCX ADDITIVE
 *!*		THIS.ioObjectToBeTested = CREATEOBJECT("MyNewClassImWriting")
@@ -73,55 +63,48 @@ DEFINE CLASS <<testclass>> as FxuTestCase OF FxuTestCase.prg
 	FUNCTION TearDown
 	********************************************************************
 	*
-	*  put common cleanup code here -- this method is called
-	*  whenever THIS.Run() (inherited method) to run each
-	*  of the custom test methods you add, specific test
-	*  methods that are not inherited from FoxUnit
+	*  这里是公共的清理代码 -- 这个方法在 This.Run() (继承的方法)中被调用。每测
+	*  试一个你所增加的自定义测试方法，它就调用一次，特定的测试方法不能从 FoxUnit
+	*  中继承。
 	*
-	*  do NOT call THIS.Assert..() methods here -- this is
-	*  NOT a test method
+	*  在这里不要调用 THIS.Assert..() 方法 -- 它不是一个测试方法
 	*
-    *  for example, you can release  all the object(s)
-    *  you will be testing by the custom test methods of 
-    *  this class:
+    *  例如，你可以在这里释放在自定义测试方法中所测试的类的实例：
+    *
 *!*	    THIS.ioObjectToBeTested = .NULL.
 *!*		LOCAL lcSetClassLib
 *!*		lcSetClassLib = THIS.icSetClassLib
-*!*		SET CLASSLIB TO &lcSetClassLib        
+*!*		SET CLASSLIB TO &lcSetClassLib              
 
 	********************************************************************
 	ENDFUNC
 	********************************************************************	
 
 	*
-	*  test methods can use any method name not already used by
-	*  the parent FXUTestCase class
+	*  测试方法可以使用任意的名称，但不能和 FXUTestCase 类中的方法重名。
 	*    MODIFY COMMAND FXUTestCase
-	*  DO NOT override any test methods except for the abstract 
-	*  test methods Setup() and TearDown(), as described above
+	*  时，不要忽略除了抽象方法 Setup() 和 TearDown() 之外的测试方法。
 	*
-	*  the three important inherited methods that you call
-	*  from your test methods are:
-	*    THIS.AssertTrue(<Expression>, "Failure message")
-	*    THIS.AssertEquals(<ExpectedValue>, <Expression>, "Failure message")
-	*    THIS.AssertNotNull(<Expression>, "Failure message")
-	*  all test methods either pass or fail -- the assertions
-	*  either succeed or fail
+	*  在测试类中你可以通过继承使用三个重要的测试方法：
+	*    THIS.AssertTrue("失败信息",<表达式>)
+	*    THIS.AssertEquals("失败信息",<预期值>,<表达式>)
+	*    THIS.AssertNotNull("失败信息",<表达式>)
+	*  所有的测试方法只有通过或失败 -- 也就是说，除了成功就是失败
     
 	*
-	*  here's a simple AssertNotNull example test method
+	*  这里的测试方法使用了一个简单的 AssertNotNull 示例
 	*
 *!*		*********************************************************************
 *!*		FUNCTION TestObjectWasCreated
 *!*		*********************************************************************
 *!*		THIS.AssertNotNull(THIS.ioObjectToBeTested, ;
-*!*			"Object was not instantiated during Setup()")
+*!*			"对象在 Setup() 中无法实例化")
 *!*		*********************************************************************
 *!*		ENDFUNC
 *!*		*********************************************************************
 
 	*
-	*  here's one for AssertTrue
+	*  这里是使用 AssertTrue
 	*
 *!*		*********************************************************************
 *!*		FUNCTION TestObjectCustomMethod 
@@ -133,18 +116,18 @@ DEFINE CLASS <<testclass>> as FxuTestCase OF FxuTestCase.prg
 *!*		*********************************************************************
 
 	*
-	*  and one for AssertEquals
+	*  最后一个是使用 AssertEquals
 	*
 *!*		*********************************************************************
 *!*		FUNCTION TestObjectCustomMethod100ReturnValue 
 *!*		*********************************************************************
 *!*
-*!*		* Please note that string Comparisons with AssertEquals are
-*!*		* case sensitive. 
+*!*		* 请注意 AssertEquals 中的字符串比较是大小写敏感的
+*!*		
 *!*
 *!*		THIS.AssertEquals("John Smith", ;
 *!*			            THIS.ioObjectToBeTested.Object.CustomMethod100(), ;
-*!*			            "Object.CustomMethod100() did not return 'John Smith'",
+*!*			            "Object.CustomMethod100() 不能返回 'John Smith'",
 *!*		*********************************************************************
 *!*		ENDFUNC
 *!*		*********************************************************************
