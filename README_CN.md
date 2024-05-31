@@ -1,4 +1,6 @@
 # FoxUnit
+[English](README.md)|[简体中文](README_CN.md)
+
 **为 VFP 开发者提供的单元测试工具**
 
 翻译：xinjie     2019.04.26
